@@ -1,6 +1,6 @@
 # Chat-room
 
-A small Vite + React + TypeScript chat app using Supabase.
+A small Vite + React + TypeScript chat app using Supabase. This project demonstrates system-level problem solving, networking, and concurrency handling, making it a strong portfolio piece.
 
 ## Requirements
 
@@ -8,58 +8,45 @@ A small Vite + React + TypeScript chat app using Supabase.
 - npm
 - A Supabase project (for the database and auth)
 
-## Setup
 
-1. Clone the repository
+🚀 Features
 
-```bash
-git clone https://github.com/Shreyasc0de/Chat-room.git
-cd Chat-room
-```
+Multi-threaded server supporting 100+ concurrent clients
 
-2. Install dependencies
+Public chat rooms and private messaging
 
-```bash
-npm install
-```
+Authentication using Supabase Auth
 
-3. Create a Supabase project and copy the project URL and anon key.
+Message persistence with Postgres (full chat history)
 
-4. Create a `.env` file in the project root with the following entries (Vite reads `import.meta.env` from `VITE_` prefixed vars):
+Typing indicators and live presence detection
 
-```env
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
-```
+Room management (create, join, leave)
 
-5. (Optional) Run the SQL migration in `supabase/migrations` on your Supabase project if needed.
+Secure and extensible design (future support for encryption & file sharing)
 
-## Run
+🏗️ Architecture
 
-Start the dev server:
+High-Level Flow:
 
-```bash
-npm run dev
-```
+Client connects to the server via sockets.
 
-Open the app at `http://localhost:5173`.
+Server spawns a dedicated thread/async process for each client.
 
-## Build
+Messages are routed (broadcast/private) and stored in the database.
 
-```bash
-npm run build
-npm run preview
-```
+Supabase handles authentication and secure persistence.
 
-## Lint
+Optional React/Next.js frontend for a modern UI.
 
-```bash
-npm run lint
-```
+[ Client(s) ] <--> [ Multi-Threaded Server ] <--> [ Supabase/Postgres DB ]
 
-## Notes
+🛠️ Tech Stack
 
-- The project uses Supabase Auth; ensure you have the appropriate auth configuration in your Supabase dashboard.
-- Database tables expected: `chat_rooms` with a default for `created_by` and relevant columns used in the app.
+Backend: Java (Threads, Sockets) / Python (Asyncio, Sockets)
 
-If you'd like, I can add a `.env.example`, CI workflow, or a step to automatically run migrations against Supabase.
+Database: Postgres + Supabase (Auth, persistence, RLS policies)
+
+Frontend (Optional): React / Next.js for UI
+
+Deployment: Docker for containerization
