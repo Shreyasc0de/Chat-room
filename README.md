@@ -2,7 +2,7 @@
 
 A small Vite + React + TypeScript chat app using Supabase.
 
-🚀 Features
+## Features
 
 Multi-threaded server supporting 100+ concurrent clients
 
@@ -24,7 +24,7 @@ Secure and extensible design (future support for encryption & file sharing)
 - npm
 - A Supabase project (for the database and auth)
 
-🛠️ Tech Stack
+## Tech Stack
 
 Backend: Java (Threads, Sockets) / Python (Asyncio, Sockets)
 
