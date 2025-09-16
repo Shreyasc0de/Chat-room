@@ -2,64 +2,51 @@
 
 A small Vite + React + TypeScript chat app using Supabase.
 
+🚀 Features
+
+Multi-threaded server supporting 100+ concurrent clients
+
+Public chat rooms and private messaging
+
+Authentication using Supabase Auth
+
+Message persistence with Postgres (full chat history)
+
+Typing indicators and live presence detection
+
+Room management (create, join, leave)
+
+Secure and extensible design (future support for encryption & file sharing)
+
 ## Requirements
 
 - Node.js 18+ (or a recent LTS)
 - npm
 - A Supabase project (for the database and auth)
 
-## Setup
+🛠️ Tech Stack
 
-1. Clone the repository
+Backend: Java (Threads, Sockets) / Python (Asyncio, Sockets)
 
-```bash
-git clone https://github.com/Shreyasc0de/Chat-room.git
-cd Chat-room
-```
+Database: Postgres + Supabase (Auth, persistence, RLS policies)
 
-2. Install dependencies
+Frontend (Optional): React / Next.js for UI
 
-```bash
-npm install
-```
+Deployment: Docker for containerization
 
-3. Create a Supabase project and copy the project URL and anon key.
-
-4. Create a `.env` file in the project root with the following entries (Vite reads `import.meta.env` from `VITE_` prefixed vars):
-
-```env
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
-```
-
-5. (Optional) Run the SQL migration in `supabase/migrations` on your Supabase project if needed.
-
-## Run
-
-Start the dev server:
-
-```bash
-npm run dev
-```
-
-Open the app at `http://localhost:5173`.
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
-
-## Lint
-
-```bash
-npm run lint
-```
-
-## Notes
-
-- The project uses Supabase Auth; ensure you have the appropriate auth configuration in your Supabase dashboard.
-- Database tables expected: `chat_rooms` with a default for `created_by` and relevant columns used in the app.
-
-If you'd like, I can add a `.env.example`, CI workflow, or a step to automatically run migrations against Supabase.
+chat-app/
+│── src/
+│   ├── App.tsx                # React/Next.js frontend (optional)
+│   ├── server/                 # Multi-threaded chat server
+│   │   ├── ChatServer.java     # Core server logic (threads, sockets)
+│   │   ├── ClientHandler.java  # Handles client messages
+│   ├── client/                 # Client application
+│   │   ├── ChatClient.java     # Client logic
+│   └── utils/
+│       ├── dateUtils.ts        # Utilities for formatting timestamps
+│
+│── supabase/
+│   ├── migrations/
+│   │   └── create_chat_schema.sql   # Database schema for messages/users
+│
+│── README.md
