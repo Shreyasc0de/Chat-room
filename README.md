@@ -34,19 +34,4 @@ Frontend (Optional): React / Next.js for UI
 
 Deployment: Docker for containerization
 
-chat-app/
-│── src/
-│   ├── App.tsx                # React/Next.js frontend (optional)
-│   ├── server/                 # Multi-threaded chat server
-│   │   ├── ChatServer.java     # Core server logic (threads, sockets)
-│   │   ├── ClientHandler.java  # Handles client messages
-│   ├── client/                 # Client application
-│   │   ├── ChatClient.java     # Client logic
-│   └── utils/
-│       ├── dateUtils.ts        # Utilities for formatting timestamps
-│
-│── supabase/
-│   ├── migrations/
-│   │   └── create_chat_schema.sql   # Database schema for messages/users
-│
-│── README.md
+
